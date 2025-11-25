@@ -1,0 +1,79 @@
+#include <stdio.h>
+#include <stdbool.h>
+
+#define MAX_SIZE 10
+
+int stack[MAX_SIZE];
+int top = -1;
+
+bool is_full() {
+    return top == MAX_SIZE - 1;
+}
+
+bool is_empty() {
+    return top == -1;
+}
+
+void push(int data) {
+    if (is_full()) {
+        printf("Stack Overflow\n");
+    } else {
+        stack[++top] = data;
+    }
+}
+
+int pop() {
+    if (is_empty()) {
+        printf("Stack Underflow\n");
+        return -1;
+    } else {
+        return stack[top--];
+    }
+}
+
+int peek() {
+    if (is_empty()) {
+        printf("Stack is Empty\n");
+        return -1;
+    } else {
+        return stack[top];
+    }
+}
+
+void display() {
+    int i;
+    if (is_empty()) {
+        printf("Stack is Empty\n");
+    } else {
+        printf("Stack elements: ");
+        for (i = top; i >= 0; i--) {
+            printf("%d ", stack[i]);
+        }
+        printf("\n");
+    }
+}
+
+int main() {
+    push(10);
+    push(20);
+    push(30);
+    display();
+
+    printf("Peek: %d\n", peek());
+
+    printf("Popped: %d\n", pop());
+    printf("Popped: %d\n", pop());
+    display();
+    
+    push(40);
+    display();
+    
+    printf("Popped: %d\n", pop());
+    printf("Popped: %d\n", pop());
+
+    if (is_empty()) {
+        printf("Stack is empty now.\n");
+    }
+
+    return 0;
+}
