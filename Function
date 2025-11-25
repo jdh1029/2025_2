@@ -1,0 +1,23 @@
+#include <stdio.h>
+
+int add(int a, int b);
+
+int main() {
+    int num1 = 10;
+    int num2 = 20;
+    int result;
+
+    result = add(num1, num2);
+
+    printf("두 수의 합: %d\n", result);
+    
+    printf("100과 50의 합: %d\n", add(100, 50));
+
+    return 0;
+}
+
+int add(int a, int b) {
+    int sum;
+    sum = a + b;
+    return sum;
+}
